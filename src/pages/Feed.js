@@ -23,20 +23,20 @@ const Feed = () => {
       setPost(response.data);
     };
     const fetchInitialPosts = async () => {
-        const response = await axios.get(`http://localhost:8080/allPosts`);
-        console.log(response);
-        setPost(response.data);
+      const response = await axios.get(`http://localhost:8080/posts`);
+      console.log(response);
+      setPost(response.data);
     }
     if (query.length === 0) fetchInitialPosts();
     if (query.length > 2) fetchPosts();
   }, [query]);
-console.log(post);
+  console.log(post);
   return (
     <Grid container spacing={2} sx={{ margin: "2%" }}>
       <Grid item xs={12} sx={12} md={12} lg={12}>
-      <Button sx={{ margin: "1% 2%" }} variant="outlined">
-            <Link to="/">Home</Link>
-          </Button>
+        <Button sx={{ margin: "1% 2%" }} variant="outlined">
+          <Link to="/">Home</Link>
+        </Button>
         <Box>
           <TextField
             InputProps={{
@@ -62,9 +62,9 @@ console.log(post);
                   variant="h5"
                   sx={{ fontSize: "2rem", fontWeight: "600" }}
                 >
-             {p.profile}
+                  {p.profile}
                 </Typography>
-                <Typography sx={{ color: "#585858", marginTop:"2%" }} variant="body" >
+                <Typography sx={{ color: "#585858", marginTop: "2%" }} variant="body" >
                   Description: {p.desc}
                 </Typography>
                 <br />
@@ -73,7 +73,7 @@ console.log(post);
                   Years of Experience: {p.exp} years
                 </Typography>
 
-                <Typography gutterBottom  variant="body">Skills : </Typography>
+                <Typography gutterBottom variant="body">Skills : </Typography>
                 {p.techs.map((s, i) => {
                   return (
                     <Typography variant="body" gutterBottom key={i}>
@@ -82,7 +82,7 @@ console.log(post);
                     </Typography>
                   );
                 })}
-  
+
               </Card>
             </Grid>
           );
